@@ -1,0 +1,5 @@
+commands to use in terminal for frontend
+npm install bootstrap
+npm install react-router-dom
+npm install react-bootstrap
+npm start
