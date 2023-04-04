@@ -1,4 +1,4 @@
-commands to use in terminal for frontend
+commands to use in terminal for frontend (needs to be in frontend directory)
 npm install bootstrap
 npm install react-router-dom
 npm install react-bootstrap
