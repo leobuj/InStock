@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const itemRoutes = require("./routes/itemRoutes");
+const orderRoutes = require("./routes/orderRoutes")
 const { notFound, errorHandler } = require("./middleware/ErrorMiddleware");
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/api/notes", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/items", itemRoutes);
+app.use("/api/orders", orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
