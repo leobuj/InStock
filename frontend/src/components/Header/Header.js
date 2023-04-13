@@ -23,7 +23,6 @@ const Header = () => {
                 My Stock
               </Link>
               </Nav.Link>
-            <Nav.Link href="#link">Sign Up</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Check Stock</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -42,6 +41,8 @@ const Header = () => {
                     className="mr-sm-2"
                 />
             </Form>
+            <Link to="/login">Login</Link>
+            <Nav.Link href="/register">Sign Up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
