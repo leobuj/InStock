@@ -5,7 +5,6 @@ import {
     Container,
     Nav,
     Navbar,
-    NavDropdown
 } from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 
@@ -23,17 +22,6 @@ const Header = () => {
                 My Stock
               </Link>
               </Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Check Stock</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Check Shipping
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
             <Form inline>
                 <FormControl 
                     type="text"
