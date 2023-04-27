@@ -22,13 +22,11 @@ const Header = () => {
                 My Stock
               </Link>
               </Nav.Link>
-            <Form inline>
-                <FormControl 
-                    type="text"
-                    placeholder="Search"
-                    className="mr-sm-2"
-                />
-            </Form>
+              <Nav.Link href="/order">
+              <Link to="/order">
+                Orders
+              </Link>
+              </Nav.Link>
             <Link to="/login">Login</Link>
             <Nav.Link href="/register">Sign Up</Nav.Link>
           </Nav>
