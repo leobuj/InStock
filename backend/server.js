@@ -7,6 +7,7 @@ const itemRoutes = require("./routes/itemRoutes");
 const shipmentRoutes = require("./routes/shipmentRoutes");
 const cron = require("node-cron");
 const deleteExpiredShipments = require("./controllers/shipmentController");
+const orderRoutes = require("./routes/orderRoutes")
 const { notFound, errorHandler } = require("./middleware/ErrorMiddleware");
 
 const app = express();
@@ -32,6 +33,7 @@ app.use("/api/shipments", shipmentRoutes);
 cron.schedule("0 0 * * *", () => {
   deleteExpiredShipments();
 });
+app.use("/api/orders", orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
