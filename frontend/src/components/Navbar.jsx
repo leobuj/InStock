@@ -42,7 +42,7 @@ const Navbar = () => {
                 </Flexible>
                 <Flexible gap="1.5rem">
                     <IconButton onClick={() => dispatch(setMode())}>
-                        {theme.palette.mode === 'dark' ?(
+                        {theme.palette.mode === "dark" ? (
                             <DarkModeOutlined sx={{ fontSize: "25px"}}/>
                         ):(
                          <LightModeOutlined sx={{ fontSize: "25px"}}/>   

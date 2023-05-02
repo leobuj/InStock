@@ -27,6 +27,11 @@ const Header = () => {
                 Orders
               </Link>
               </Nav.Link>
+              <Nav.Link href="/shipments">
+              <Link to="/shipments">
+                Shipments
+              </Link>
+              </Nav.Link>
             <Link to="/login">Login</Link>
             <Nav.Link href="/register">Sign Up</Nav.Link>
           </Nav>
