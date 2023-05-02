@@ -1,0 +1,18 @@
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+form {
+    background: #dea857;
+    padding: 1.5em;
+    border-radius: 1em;
+}
+
+.error-message {
+    margin-top: 1em;
+    color: red;
+}

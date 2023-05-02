@@ -8,3 +8,6 @@ MERN Stack web application intended for keeping track of inventory, stock, and o
 - ```../cd/frontend``` and run ```npm intall```
 - To begin the server ```cd``` into ```backend``` and run ```npm start```
 - Create a new terminal window and ```cd``` into ```front end``` and run ```npm start```
+
+- THIS BRANCH REQUIRES YOU TO INSTALL AXIOS INTO YOUR MAIN FOLDER.
+- To do this, ```cd``` into ```InStock``` and run ```npm install axios```
