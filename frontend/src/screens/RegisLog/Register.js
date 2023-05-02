@@ -62,15 +62,15 @@ function Register(){
             <form onSubmit={submitHandler}>
                 <div className="d-flex align-items-center justify-content-center mb-4">
                     <label for="name" className="me-3">Username:</label> <br/>
-                    <input type="text" id="name" name="name"/><br/>
+                    <input type="text" id="name" name="name" onChange={(e) => setName(e.target.value)}/><br/>
                 </div>
                 <div className="d-flex align-items-center justify-content-center mb-4">
                     <label for="eml" className="me-5">Email:</label> <br/>
-                    <input type="text" id="eml" name="eml"/><br/>
+                    <input type="text" id="eml" name="eml" onChange={(e) => setEmail(e.target.value)}/><br/>
                 </div>
                 <div className="d-flex align-items-center justify-content-center mb-4">
                     <label for="pwd" className="me-4">Password:</label> <br/>
-                    <input type="password" id="pwd" name="pwd"/><br/>
+                    <input type="password" id="pwd" name="pwd" onChange={(e) => setPassword(e.target.value)}/><br/>
                 </div>
                 <div className="d-flex align-items-center justify-content-center justify-content-space-evenly mt-5">
                     <button type="submit" class="btn btn-primary">Sign Up</button>
