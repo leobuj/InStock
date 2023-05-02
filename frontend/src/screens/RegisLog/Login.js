@@ -66,11 +66,11 @@ function Login() {
             <form onSubmit={submitHandler}>
                 <div className="d-flex align-items-center justify-content-center mb-4 me-2">
                     <label for="uname" className="me-2" placeholder="Username">Username:</label> <br/>
-                    <input type="text" id="uname" name="uname"/><br/>
+                    <input type="text" id="uname" name="uname" onChange={(e) => setEmail(e.target.value)}/><br/>
                 </div>
                 <div className="d-flex align-items-center justify-content-center mb-4 me-1">
                     <label for="pwd" className="me-2" placeholder="Password">Password:</label> <br/>
-                    <input type="password" id="pwd" name="pwd"/><br/>
+                    <input type="password" id="pwd" name="pwd" onChange={(e) => setPassword(e.target.value)}/><br/>
                 </div>
                 <div className="d-flex align-items-center justify-content-center justify-content-space-evenly mt-5">
                     <button type="submit" class="btn btn-primary">Login</button>
