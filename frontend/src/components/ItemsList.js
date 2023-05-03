@@ -2,6 +2,10 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 
 function ItemList({ items }) {
+  if (!items) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Accordion>
       {items.map((item, index) => (
