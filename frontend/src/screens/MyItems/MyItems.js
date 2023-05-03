@@ -42,6 +42,11 @@ const MyItems = () => {
     setItems([...items, newItem]);
   };
 
+  const handleDeleteItem = (oldItem) => {
+    console.log(`ITEM WAS DELETED\nold_item._id=${oldItem._id}`);
+    setItems(items.filter((item) => item._id !== oldItem._id));
+  };
+
   return (
     <MainScreen title="My Items">
       <Button
@@ -50,7 +55,7 @@ const MyItems = () => {
       >
         Add New Item
       </Button>
-      <ItemList items={items} />
+      <ItemList items={items} onRemoveItem={handleDeleteItem} />
       <ItemCreationPrompt
         show={showPrompt}
         handleClose={handlePromptClose}
