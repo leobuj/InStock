@@ -1,31 +1,26 @@
-import React from 'react';
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import LandingPage from "./screens/LandingPage/LandingPage";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import MyItems from "./screens/MyItems/MyItems";
 
-import Header from "./components/Header/Header"
-import Footer from './components/Footer/Footer';
-import LandingPage from './screens/LandingPage/LandingPage';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import TestStock from './screens/TestStock/TestStock';
-import Login from './screens/RegisLog/Login';
-import Register from './screens/RegisLog/Register';
+const App = () => (
+  <BrowserRouter>
+    <Header />
+    <main>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/myitems" element={<MyItems />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+      </Routes>
+    </main>
 
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <main>
-        <Routes>
-          <Route path='/' element={<LandingPage />} exact/>
-          <Route path='/teststock' element={<TestStock />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
-        </Routes>
-      </main>
-      <Footer />
-    </BrowserRouter>
-  );
-}
+    <Footer />
+  </BrowserRouter>
+);
 
 export default App;
