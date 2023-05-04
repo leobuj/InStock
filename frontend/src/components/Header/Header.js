@@ -27,7 +27,7 @@ function Header() {
             </Nav.Link>
           </Nav>
           <Nav className="ma-auto">
-            <Nav.Link href="#aboutus">About Us</Nav.Link>
+            <Nav.Link href="/aboutus">About Us</Nav.Link>
             <NavDropdown title="Profile" id="basic-nav-dropdown">
               <NavDropdown.Item href="#viewprofile">
                 View My Profile
