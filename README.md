@@ -9,7 +9,7 @@ MERN Stack web application intended for keeping track of inventory, stock, and o
 - ```npm i```
 - ```cd ../frontend```
 - ```npm i```
-- ```cd```
+- ```cd ..```
 
 - To begin the server copy and paste the following commands into your terminal and hit enter.
 - ```cd``` into ```backend``` and run ```npm start```
