@@ -5,6 +5,7 @@ import OrderCreationPrompt from "../../components/OrderCreationPrompt/OrderCreat
 import { Button } from "react-bootstrap";
 import ShipmentList from "../../components/ShipmentsList";
 import axios from "axios";
+import ShipmentCreationPrompt from "../../components/ShipmentCreationPrompt/ShipmentCreationPrompt";
 
 const MyShipments = () => {
   const [shipments, setShipments] = useState([]);
@@ -71,7 +72,7 @@ const MyShipments = () => {
         shipments={shipments}
         onRemoveShipment={handleDeleteShipment}
       />
-      <OrderCreationPrompt
+      <ShipmentCreationPrompt
         show={showPrompt}
         handleClose={handlePromptClose}
         onNewOrder={handleNewOrderClick}

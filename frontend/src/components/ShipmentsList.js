@@ -65,6 +65,7 @@ function ShipmentList({ shipments, onRemoveShipment }) {
               <Accordion.Body>
                 <p>carrier: {shipment.carrier}</p>
                 <p>Tracking Number: {shipment.trackingNumber}</p>
+                <p>Expected Arriaval: {shipment.expectedArrival}</p>
                 <p>Items:</p>
                 <ul>
                   {shipment.itemsContained.map((item) => (

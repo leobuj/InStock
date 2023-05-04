@@ -1,32 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import DatePicker from "react-datepicker";
 import axios from "axios";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 
 const ShipmentCreationPrompt = ({ show, handleClose, onNewShipment }) => {
   const [carrier, setShipmentCarrier] = useState("");
+  const [items, setItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
   const [expectedArrival, setExpectedArrival] = useState("");
   const [trackingNumber, setTrackingNumber] = useState("");
   const [loadingState, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
-  const handleStatusChange = (e) => {
+  const handleItemsChange = (e) => {
+    setSelectedItems([...selectedItems, e.target.value]);
+    console.log(`selectedItems array: ${selectedItems}`);
+    console.log(`e.target.value: ${e.target.value}`);
+    console.log(`e.target.value: ${e.target.value}`);
+  };
+
+  const handleShipmentCarrierChange = (e) => {
     setShipmentCarrier(e.target.value);
   };
 
-  const handleExpectedArrivalChange = (e) => {
-    setExpectedArrival(e.target.value);
+  const handleExpectedArrivalChange = (date) => {
+    setExpectedArrival(new Date(date));
   };
 
-  const handleAddressChange = (e) => {
+  const handleTrackingNumberChange = (e) => {
     setTrackingNumber(e.target.value);
   };
 
-  // const handleDateChange = (e) => {
-  //   setDate(e.target.value);
-  // }
+  // Fetches the user's items from the backend
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        const response = await fetch("http://localhost:5001/api/items", {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        });
+        const data = await response.json();
+        setItems(data);
+      } catch (error) {
+        console.error(`ERROR OCCURED: ${error}`);
+      }
+    };
+
+    fetchItems();
+  }, []);
 
   const resetStates = () => {
     setShipmentCarrier("");
@@ -41,7 +67,7 @@ const ShipmentCreationPrompt = ({ show, handleClose, onNewShipment }) => {
   const handleConfirmClick = async () => {
     if (carrier !== "") {
       try {
-        const userInfo = JSON.parse(localStorage.getShipment("userInfo"));
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         const config = {
           headers: {
             "Content-type": "application/json",
@@ -51,14 +77,23 @@ const ShipmentCreationPrompt = ({ show, handleClose, onNewShipment }) => {
 
         const { data } = await axios.post(
           "http://localhost:5001/api/shipments/create",
-          { carrier: carrier, expectedArrival: expectedArrival, trackingNumber: trackingNumber },
+          {
+            carrier: carrier,
+            expectedArrival: expectedArrival,
+            trackingNumber: trackingNumber,
+            itemsContained: selectedItems.map((item) => ({
+              item: item,
+              quantity: 1,
+            })),
+          },
           config
         );
 
-        onNewShipment(data); // Callback function, adds new order to orders state in MyOrders.js
+        //onNewShipment(data); // Callback function, adds new order to orders state in MyOrders.js
         handleClose();
         resetStates();
       } catch (error) {
+        console.log(error);
         console.log(error.response);
         setError(error.response.data.message);
         handleClose();
@@ -85,16 +120,7 @@ const ShipmentCreationPrompt = ({ show, handleClose, onNewShipment }) => {
               type="text"
               placeholder="Enter shipment carrier"
               value={carrier}
-              onChange={handleStatusChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="exectedArrival">
-            <Form.Label>Expected Arrival</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter products"
-              value={expectedArrival}
-              onChange={handleExpectedArrivalChange}
+              onChange={handleShipmentCarrierChange}
             />
           </Form.Group>
           <Form.Group controlId="trackingNumber">
@@ -103,18 +129,45 @@ const ShipmentCreationPrompt = ({ show, handleClose, onNewShipment }) => {
               type="text"
               placeholder="Enter tracking number"
               value={trackingNumber}
-              onChange={handleAddressChange}
+              onChange={handleTrackingNumberChange}
             />
           </Form.Group>
-          {/* <Form.Group controlId="date">
+          <Form.Group
+            controlId="itemsContained"
+            style={{ maxHeight: "200px", overflowY: "scroll" }}
+          >
+            <Form.Label>Items Contained</Form.Label>
+            {items.slice(0, 10).map((item, index) => (
+              <div
+                key={index}
+                className="d-flex align-items-center justify-content-start mb-3"
+              >
+                <Form.Switch
+                  id={`item-${index}`}
+                  value={item._id}
+                  label={item.name}
+                  onChange={handleItemsChange}
+                />
+                <Form.Control
+                  type="number"
+                  placeholder="Quantity"
+                  min={1}
+                  defaultValue={1}
+                  style={{ width: "80px" }}
+                  className="ml-3"
+                />
+              </div>
+            ))}
+          </Form.Group>
+
+          <Form.Group controlId="formDate">
             <Form.Label>Date</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter date"
-              value={date}
-              onChange={handleDateChange}
+            <DatePicker
+              dateFormat="MM-dd-yyyy"
+              selected={expectedArrival}
+              onChange={handleExpectedArrivalChange}
             />
-          </Form.Group> */}
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
