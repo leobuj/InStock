@@ -17,3 +17,5 @@ MERN Stack web application intended for keeping track of inventory, stock, and o
 - Create a new terminal window and copy and paste these instructions into your terminal and hit enter. 
 - ```cd frontend```
 - ```npm start```
+
+- You may now enjoy InStock!!
