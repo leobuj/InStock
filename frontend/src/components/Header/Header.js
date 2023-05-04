@@ -1,62 +1,52 @@
-import {
-    //Button,
-    Form,
-    FormControl,
-    Container,
-    Nav,
-    Navbar,
-    NavDropdown
-} from 'react-bootstrap'
-import {Link, useNavigate} from 'react-router-dom';
-const Header = () => {
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link, useNavigate } from "react-router-dom";
 
-  const history = useNavigate();
+function Header() {
+  const navigate = useNavigate();
 
-    return(<Navbar bg="light" expand="lg">
+  return (
+    <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">
-          <Link to='/'><button type="button" class="btn btn-primary">InStock</button></Link>
+        <Navbar.Brand>
+          <Link to="/dashboard">InStock</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/teststock">
-              <Link to="/teststock">
-                My Stock
-              </Link>
-              </Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Check Stock</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Check Shipping
+          <Nav className="mr-auto">
+            <Nav.Link>
+              <Link to="/myitems">My Items</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/myorders">My Orders</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/myshipments">My Shipments</Link>
+            </Nav.Link>
+          </Nav>
+          <Nav className="ma-auto">
+            <Nav.Link href="/aboutus">About Us</Nav.Link>
+            <NavDropdown title="Profile" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/profile">
+                View My Profile
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={()=> {
-                localStorage.removeItem("userInfo");
-                history("/");
-              }}
+              <NavDropdown.Item
+                onClick={() => {
+                  localStorage.removeItem("userInfo");
+                  navigate("/");
+                }}
               >
-                Logout
+                Log Out
               </NavDropdown.Item>
             </NavDropdown>
-            <Form inline>
-                <FormControl 
-                    type="text"
-                    placeholder="Search"
-                    className="mr-sm-2"
-                />
-            </Form>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/register">Sign Up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    );
-};
+  );
+}
 
 export default Header;

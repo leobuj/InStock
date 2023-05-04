@@ -54,7 +54,10 @@ test("Shipment Creation Works", async () => {
     carrier: carrier,
     expectedArrival: expectedArrival,
     trackingNumber: trackingNumber,
-    itemsContained: itemsContained,
+    itemsContained: [
+      { item: item1, quantity: 1 },
+      { item: item2, quantity: 1 },
+    ],
   };
 
   let res_shipment_creation = await axios.post(
@@ -65,7 +68,7 @@ test("Shipment Creation Works", async () => {
 
   var shipment_data = getString(res_shipment_creation.data);
   const result = shipment_data.split(",").slice(2, 5).join(",");
-  const expectedResponse = `"trackingNumber":"${trackingNumber}","itemsContained":["${item1}","${item2}"]`;
+  const expectedResponse = `"trackingNumber":"${trackingNumber}","itemsContained":[{"item":"${item1}","quantity":1`;
 
   expect(expectedResponse).toBe(result);
 });
@@ -83,10 +86,10 @@ test("Shipment lookup via ID works", async () => {
   // Bearer token now jas JWT
   const config = { headers: { Authorization: `Bearer ${JWT}` } };
 
-  const trackingNumber = "kat8jo3zuf";
+  const trackingNumber = "6lkhmcxood";
   const item1 = "6450bb9b21198cd9c0af9ead";
   const item2 = "6450bba021198cd9c0af9eb2";
-  const shipment_id = "6450c4a2e0100cc4d2f38983";
+  const shipment_id = "6453bf1ff149546fd8287575";
 
   let res_shipment_creation = await axios.get(
     `http://localhost:5001/api/shipments/${shipment_id}`,
@@ -95,7 +98,7 @@ test("Shipment lookup via ID works", async () => {
   var shipment_data = getString(res_shipment_creation.data);
 
   const result = shipment_data.split(",").slice(3, 6).join(",");
-  const expectedResponse = `"trackingNumber":"${trackingNumber}","itemsContained":["${item1}","${item2}"]`;
+  const expectedResponse = `"trackingNumber":"${trackingNumber}","itemsContained":[{"item":"${item1}","quantity":1`;
 
   expect(result).toBe(expectedResponse);
 });

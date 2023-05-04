@@ -7,13 +7,22 @@ const itemRoutes = require("./routes/itemRoutes");
 const shipmentRoutes = require("./routes/shipmentRoutes");
 const cron = require("node-cron");
 const deleteExpiredShipments = require("./controllers/shipmentController");
-const orderRoutes = require("./routes/orderRoutes")
+const orderRoutes = require("./routes/orderRoutes");
 const { notFound, errorHandler } = require("./middleware/ErrorMiddleware");
+const cors = require("cors");
 
 const app = express();
 dotenv.config();
 connectDB();
 app.use(express.json());
+
+// This will allow requests from http://localhost:3000 to access the server.
+// You can change the origin to match your client-side domain.
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 const PORT = process.env.PORT || 5001;
 

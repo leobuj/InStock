@@ -1,51 +1,51 @@
 .main {
-    min-height: 93vh;
-    display: flex;
-    align-items: center;
-    background-image: url("D:\Comp Sci Homework\InStock\InStock\frontend\src\background1.jpg");
-    background-position: center;
-    background-size: cover;
+  min-height: 93vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../../images/background2.avif");
+  background-position: center;
+  background-size: cover;
 }
 
 .title {
-    font-size: 95px;
+  font-size: 95px;
 }
 
 .subtitle {
-    font-size: 25px;
-    padding-top: 10px;
+  font-size: 25px;
+  padding-top: 15px;
 }
 
 .intro-text {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .buttonContainer {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-evenly;
+  margin-top: 75px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.landingbutton {
-    width: 200px;
-    height: 55px;
+.landingButton {
+  width: 250px;
+  height: 100px;
+}
+@media only screen and (min-width: 1200px) {
+  .buttonContainer {
+    padding: 0 200px;
+  }
+  .title {
+    padding: 0 100px;
+  }
 }
 
-@media screen  and (min-width: 1200px) {
-    .buttonContainer {
-        padding: 0 200px;
-    }
-    .title {
-        padding: 0 100px;
-    }
-}
-@media only screen  and (max-width: 768px) {
-    .title {
-        font-size: 60;
-    }
-    .landingbutton {
-        width: 150px;
-        height: 50;
-    }
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 60px;
+  }
+  .landingbutton {
+    width: 150px;
+    height: 50px;
+  }
 }

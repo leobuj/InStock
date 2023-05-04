@@ -2,18 +2,18 @@ const Order = require("../models/orderModel");
 const asyncHandler = require("express-async-handler");
 
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find();
+  const orders = await Order.find({ user: req.user._id });
   res.json(orders);
 });
 
 const createOrder = asyncHandler(async (req, res) => {
   const { status, products, address } = req.body;
 
-  if (!products ) {
+  if (!products) {
     res.status(400);
     throw new Error("Please fill out all fields");
   } else {
-    const order = new Order({ user: req.user._id, status, products, address  });
+    const order = new Order({ user: req.user._id, status, products, address });
     const createdOrder = await order.save();
     res.status(201).json(createdOrder);
   }
@@ -51,6 +51,7 @@ const updateOrder = asyncHandler(async (req, res) => {
 });
 
 const deleteOrder = asyncHandler(async (req, res) => {
+  console.log(`DELETING ORDER with ID:${req.params.id}`);
   const order = await Order.findById(req.params.id);
 
   if (!order) {
@@ -69,4 +70,10 @@ const deleteOrder = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getOrders, createOrder, getOrderByID, updateOrder, deleteOrder };
+module.exports = {
+  getOrders,
+  createOrder,
+  getOrderByID,
+  updateOrder,
+  deleteOrder,
+};
