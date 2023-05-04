@@ -4,25 +4,24 @@ import axios from "axios";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 
-const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
-  const [orderStatus, setOrderStatus] = useState("");
-  const [products, setProducts] = useState("");
-  const [address, setAddress] = useState("");
-  // const [date, setDate] = useState("");
+const ShipmentCreationPrompt = ({ show, handleClose, onNewShipment }) => {
+  const [carrier, setShipmentCarrier] = useState("");
+  const [expectedArrival, setExpectedArrival] = useState("");
+  const [trackingNumber, setTrackingNumber] = useState("");
   const [loadingState, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
   const handleStatusChange = (e) => {
-    setOrderStatus(e.target.value);
+    setShipmentCarrier(e.target.value);
   };
 
-  const handleProductsChange = (e) => {
-    setProducts(e.target.value);
+  const handleExpectedArrivalChange = (e) => {
+    setExpectedArrival(e.target.value);
   };
 
   const handleAddressChange = (e) => {
-    setAddress(e.target.value);
+    setTrackingNumber(e.target.value);
   };
 
   // const handleDateChange = (e) => {
@@ -30,19 +29,19 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
   // }
 
   const resetStates = () => {
-    setOrderStatus("");
-    setProducts("");
-    setAddress("");
+    setShipmentCarrier("");
+    setExpectedArrival("");
+    setTrackingNumber("");
     // setDate("");
     setMessage(null);
     setLoading(false);
   };
 
-  // POSTS the new order to the backend
+  // POSTS the new shipment to the backend
   const handleConfirmClick = async () => {
-    if (orderStatus !== "") {
+    if (carrier !== "") {
       try {
-        const userInfo = JSON.parse(localStorage.getOrder("userInfo"));
+        const userInfo = JSON.parse(localStorage.getShipment("userInfo"));
         const config = {
           headers: {
             "Content-type": "application/json",
@@ -51,12 +50,12 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
         };
 
         const { data } = await axios.post(
-          "http://localhost:5001/api/orders/create",
-          { status: orderStatus, products: products, address: address },
+          "http://localhost:5001/api/shipments/create",
+          { carrier: carrier, expectedArrival: expectedArrival, trackingNumber: trackingNumber },
           config
         );
 
-        onNewOrder(data); // Callback function, adds new order to orders state in MyOrders.js
+        onNewShipment(data); // Callback function, adds new order to orders state in MyOrders.js
         handleClose();
         resetStates();
       } catch (error) {
@@ -80,30 +79,30 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group controlId="orderStatus">
-            <Form.Label>Order Status</Form.Label>
+          <Form.Group controlId="carrier">
+            <Form.Label>Shipment Carrier</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter order status"
-              value={orderStatus}
+              placeholder="Enter shipment carrier"
+              value={carrier}
               onChange={handleStatusChange}
             />
           </Form.Group>
-          <Form.Group controlId="products">
-            <Form.Label>Products</Form.Label>
+          <Form.Group controlId="exectedArrival">
+            <Form.Label>Expected Arrival</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter products"
-              value={products}
-              onChange={handleProductsChange}
+              value={expectedArrival}
+              onChange={handleExpectedArrivalChange}
             />
           </Form.Group>
-          <Form.Group controlId="address">
-            <Form.Label>Address</Form.Label>
+          <Form.Group controlId="trackingNumber">
+            <Form.Label>Tracking Number</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter address"
-              value={address}
+              placeholder="Enter tracking number"
+              value={trackingNumber}
               onChange={handleAddressChange}
             />
           </Form.Group>
@@ -130,4 +129,4 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
   );
 };
 
-export default OrderCreationPrompt;
+export default ShipmentCreationPrompt;
