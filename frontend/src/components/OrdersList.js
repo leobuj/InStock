@@ -13,9 +13,9 @@ function OrderList({ orders, onRemoveOrder }) {
 
   const handleDelete = async () => {
     // TODO: Implement delete functionality here
-    console.log("Deleting order", orderToDelete);
+    console.log("OrdersList: Deleting order", orderToDelete);
     try {
-      const userInfo = JSON.parse(localStorage.getOrder("userInfo"));
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -29,6 +29,7 @@ function OrderList({ orders, onRemoveOrder }) {
       // Remove the deleted item from the orders array
       onRemoveOrder(orderToDelete); // Callback function, deletes the item from orders array
     } catch (error) {
+      console.log(error);
       console.log(error.response);
     }
     setOrderToDelete(null);

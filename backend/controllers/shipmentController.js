@@ -4,7 +4,10 @@ const asyncHandler = require("express-async-handler");
 const cron = require("node-cron");
 
 const getShipments = asyncHandler(async (req, res) => {
-  const shipments = await Shipment.find({ user: req.user._id });
+  const shipments = await Shipment.find({ user: req.user._id }).populate({
+    path: "itemsContained.item",
+    model: "Item",
+  });
   res.json(shipments);
 });
 

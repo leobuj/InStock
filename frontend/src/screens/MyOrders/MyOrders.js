@@ -42,7 +42,6 @@ const MyOrders = () => {
   };
 
   const handleDeleteOrder = (oldOrder) => {
-    console.log(`ORDER WAS DELETED\nold_order._id=${oldOrder._id}`);
     setOrders(orders.filter((order) => order._id !== oldOrder._id));
   };
 

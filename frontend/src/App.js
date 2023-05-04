@@ -6,7 +6,10 @@ import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import MyItems from "./screens/MyItems/MyItems";
+
 import MyOrders from "./screens/MyOrders/MyOrders";
+
+import DashboardPage from "./screens/DashboardPage/DashboardPage";
 import MyShipments from "./screens/MyShipments/MyShipments";
 
 const App = () => (
@@ -20,6 +23,7 @@ const App = () => (
         <Route path="/myshipments" element={<MyShipments />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </main>
 

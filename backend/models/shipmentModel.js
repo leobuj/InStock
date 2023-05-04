@@ -17,8 +17,11 @@ const shipmentSchema = mongoose.Schema(
     },
     itemsContained: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Item",
+        item: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Item",
+        },
+        quantity: Number,
       },
     ],
     user: {

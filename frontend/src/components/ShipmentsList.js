@@ -6,6 +6,7 @@ import axios from "axios";
 function ShipmentList({ shipments, onRemoveShipment }) {
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
   const [shipmentToDelete, setShipmentToDelete] = useState(null);
+  const [itemsInShipment, setItemsInShipment] = useState("");
 
   if (!shipments) {
     return <div>Loading...</div>;
@@ -15,7 +16,7 @@ function ShipmentList({ shipments, onRemoveShipment }) {
     // TODO: Implement delete functionality here
     console.log("Deleting shipment", shipmentToDelete);
     try {
-      const userInfo = JSON.parse(localStorage.getShipment("userInfo"));
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -64,6 +65,14 @@ function ShipmentList({ shipments, onRemoveShipment }) {
               <Accordion.Body>
                 <p>carrier: {shipment.carrier}</p>
                 <p>Tracking Number: {shipment.trackingNumber}</p>
+                <p>Items:</p>
+                <ul>
+                  {shipment.itemsContained.map((item) => (
+                    <li key={item._id}>
+                      {item.item.name} ({item.quantity})
+                    </li>
+                  ))}
+                </ul>
               </Accordion.Body>
             </Accordion.Item>
           </Card>

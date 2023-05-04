@@ -11,7 +11,7 @@ function Header() {
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
         <Navbar.Brand>
-          <Link to="/">InStock</Link>
+          <Link to="/dashboard">InStock</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

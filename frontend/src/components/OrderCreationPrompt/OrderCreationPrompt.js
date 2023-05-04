@@ -8,41 +8,35 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
   const [orderStatus, setOrderStatus] = useState("");
   const [products, setProducts] = useState("");
   const [address, setAddress] = useState("");
-  // const [date, setDate] = useState("");
   const [loadingState, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
-  const handleStatusChange = (e) => {
+  const handleNameChange = (e) => {
     setOrderStatus(e.target.value);
   };
 
-  const handleProductsChange = (e) => {
+  const handleQuantityChange = (e) => {
     setProducts(e.target.value);
   };
 
-  const handleAddressChange = (e) => {
+  const handleDescriptionChange = (e) => {
     setAddress(e.target.value);
   };
-
-  // const handleDateChange = (e) => {
-  //   setDate(e.target.value);
-  // }
 
   const resetStates = () => {
     setOrderStatus("");
     setProducts("");
     setAddress("");
-    // setDate("");
     setMessage(null);
     setLoading(false);
   };
 
-  // POSTS the new order to the backend
+  // POSTS the new item to the backend
   const handleConfirmClick = async () => {
-    if (orderStatus !== "") {
+    if (orderStatus !== "" && products !== "") {
       try {
-        const userInfo = JSON.parse(localStorage.getOrder("userInfo"));
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         const config = {
           headers: {
             "Content-type": "application/json",
@@ -56,7 +50,7 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
           config
         );
 
-        onNewOrder(data); // Callback function, adds new order to orders state in MyOrders.js
+        onNewOrder(data); // Callback function, adds new item to items state in MyItems.js
         handleClose();
         resetStates();
       } catch (error) {
@@ -66,7 +60,7 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
         setLoading(false);
       }
     } else {
-      setMessage("All fields are required");
+      setMessage("Please fill out all fields");
     }
   };
 
@@ -86,36 +80,27 @@ const OrderCreationPrompt = ({ show, handleClose, onNewOrder }) => {
               type="text"
               placeholder="Enter order status"
               value={orderStatus}
-              onChange={handleStatusChange}
+              onChange={handleNameChange}
             />
           </Form.Group>
-          <Form.Group controlId="products">
+          <Form.Group controlId="produccts">
             <Form.Label>Products</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter products"
               value={products}
-              onChange={handleProductsChange}
+              onChange={handleQuantityChange}
             />
           </Form.Group>
           <Form.Group controlId="address">
             <Form.Label>Address</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter address"
+              placeholder="Enter the address"
               value={address}
-              onChange={handleAddressChange}
+              onChange={handleDescriptionChange}
             />
           </Form.Group>
-          {/* <Form.Group controlId="date">
-            <Form.Label>Date</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter date"
-              value={date}
-              onChange={handleDateChange}
-            />
-          </Form.Group> */}
         </Form>
       </Modal.Body>
       <Modal.Footer>
