@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MainScreen from "../../components/MainScreen/MainScreen";
-import OrderList from "../../components/OrdersList";
-import OrderCreationPrompt from "../../components/OrderCreationPrompt/OrderCreationPrompt";
 import { Button } from "react-bootstrap";
 import ShipmentList from "../../components/ShipmentsList";
-import axios from "axios";
 import ShipmentCreationPrompt from "../../components/ShipmentCreationPrompt/ShipmentCreationPrompt";
+import axios from "axios";
 
 const MyShipments = () => {
   const [shipments, setShipments] = useState([]);
@@ -19,7 +17,7 @@ const MyShipments = () => {
     setShowPrompt(false);
   };
 
-  // Fetches the user's orders from the backend
+  // Fetches the user's shipments from the backend
   useEffect(() => {
     const fetchOrders = async () => {
       try {
