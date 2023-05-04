@@ -12,7 +12,8 @@ MERN Stack web application intended for keeping track of inventory, stock, and o
 - ```cd ..```
 
 - To begin the server copy and paste the following commands into your terminal and hit enter.
-- ```cd``` into ```backend``` and run ```npm start```
+- ```cd backend```
+- ```npm start```
 - Create a new terminal window and ```cd``` into ```front end``` and run ```npm start```
 
 - THIS BRANCH REQUIRES YOU TO INSTALL AXIOS INTO YOUR MAIN FOLDER.
