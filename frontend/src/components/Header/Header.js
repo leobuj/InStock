@@ -19,6 +19,9 @@ function Header() {
             <Nav.Link>
               <Link to="/myitems">My Items</Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link to="/myorders">My Orders</Link>
+            </Nav.Link>
           </Nav>
           <Nav className="ma-auto">
             <Nav.Link href="#aboutus">About Us</Nav.Link>

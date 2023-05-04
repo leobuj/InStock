@@ -6,6 +6,7 @@ import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import MyItems from "./screens/MyItems/MyItems";
+import MyOrders from "./screens/OrdersPage/MyOrders";
 
 const App = () => (
   <BrowserRouter>
@@ -14,6 +15,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/myitems" element={<MyItems />} />
+        <Route path="/myorders" element={<MyOrders />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
       </Routes>
