@@ -14,6 +14,6 @@ MERN Stack web application intended for keeping track of inventory, stock, and o
 - To begin the server copy and paste the following commands into your terminal and hit enter.
 - ```cd backend```
 - ```npm start```
-- Create a new terminal window and copy and paste these instructions into your terminal
+- Create a new terminal window and copy and paste these instructions into your terminal and hit enter. 
 - ```cd frontend```
 - ```npm start```
