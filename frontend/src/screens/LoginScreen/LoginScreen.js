@@ -33,7 +33,7 @@ const LoginScreen = ({ history }) => {
       );
       console.log(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
-      navigate("/myitems");
+      navigate("/dashboard");
       setLoading(false);
     } catch (error) {
       console.log(`EMAIL SENT : ${email}\nPASS SENT : ${password}`);

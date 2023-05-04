@@ -42,7 +42,7 @@ const RegisterScreen = () => {
 
         setLoading(false);
         localStorage.setItem("userInfo", JSON.stringify(data));
-        navigate("/myitems");
+        navigate("/dashboard");
       } catch (error) {
         setError(error.response.data.message);
         setLoading(false);
