@@ -74,7 +74,7 @@ const LoginScreen = ({ history }) => {
           <Form.Check type="checkbox" label="Remember me" />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Login
         </Button>
       </Form>
       <Row className="py-3">
