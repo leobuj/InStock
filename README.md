@@ -17,6 +17,3 @@ MERN Stack web application intended for keeping track of inventory, stock, and o
 - Create a new terminal window and copy and paste these instructions into your terminal
 - ```cd frontend```
 - ```npm start```
-
-- THIS BRANCH REQUIRES YOU TO INSTALL AXIOS INTO YOUR MAIN FOLDER.
-- To do this, ```cd``` into ```InStock``` and run ```npm install axios```
