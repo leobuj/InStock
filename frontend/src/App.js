@@ -6,6 +6,7 @@ import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import MyItems from "./screens/MyItems/MyItems";
+import AboutUs from "./screens/AboutUs/AboutUs";
 import "react-datepicker/dist/react-datepicker.css"; // Necessary HERE for some reason https://stackoverflow.com/questions/71203422/react-datepicker-no-working-in-next-js-because-of-css-import
 
 import MyOrders from "./screens/MyOrders/MyOrders";
@@ -19,6 +20,7 @@ const App = () => (
     <main>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/aboutus" element={<AboutUs />}/>
         <Route path="/myitems" element={<MyItems />} />
         <Route path="/myorders" element={<MyOrders />} />
         <Route path="/myshipments" element={<MyShipments />} />
