@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import MainScreen from "../../components/MainScreen/MainScreen";
 import OrderList from "../../components/OrdersList";
-import ItemCreationPrompt from "../../components/ItemCreationPrompt/ItemCreationPrompt";
+import OrderCreationPrompt from "../../components/OrderCreationPrompt/OrderCreationPrompt";
+import { Button } from "react-bootstrap";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [showPrompt, setShowPrompt] = useState(false);
 
-//   const handleAddItemClick = () => {
-//     setShowPrompt(true);
-//   };
+  const handleAddOrderClick = () => {
+    setShowPrompt(true);
+  };
 
   const handlePromptClose = () => {
     setShowPrompt(false);
   };
 
-  // Fetches the user's items from the backend
+  // Fetches the user's orders from the backend
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -35,10 +36,10 @@ const MyOrders = () => {
     fetchOrders();
   }, []);
 
-//   const handleNewItemClick = (newOrder) => {
-//     console.log("NEW ITEM WAS ADDED");
-//     setOrders([...orders, newOrder]);
-//   };
+  const handleNewOrderClick = (newOrder) => {
+    console.log("NEW ORDER WAS ADDED");
+    setOrders([...orders, newOrder]);
+  };
 
   const handleDeleteOrder = (oldOrder) => {
     console.log(`ORDER WAS DELETED\nold_order._id=${oldOrder._id}`);
@@ -47,17 +48,17 @@ const MyOrders = () => {
 
   return (
     <MainScreen title="My Orders">
-      {/* <Button
+      <Button
         style={{ marginLeft: 10, marginBottom: 6 }}
-        onClick={handleAddItemClick}
+        onClick={handleAddOrderClick}
       >
-        Add New Item
-      </Button> */}
+        Add New Order
+      </Button>
       <OrderList orders={orders} onRemoveOrder={handleDeleteOrder} />
-      <ItemCreationPrompt
+      <OrderCreationPrompt
         show={showPrompt}
         handleClose={handlePromptClose}
-        // onNewItem={handleNewItemClick}
+        onNewOrder={handleNewOrderClick}
       />
     </MainScreen>
   );

@@ -2,7 +2,7 @@ const Order = require("../models/orderModel");
 const asyncHandler = require("express-async-handler");
 
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find();
+  const orders = await Order.find({ user: req.user._id });
   res.json(orders);
 });
 
