@@ -29,7 +29,7 @@ function Header() {
           <Nav className="ma-auto">
             <Nav.Link href="#aboutus">About Us</Nav.Link>
             <NavDropdown title="Profile" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#viewprofile">
+              <NavDropdown.Item href="/profile">
                 View My Profile
               </NavDropdown.Item>
               <NavDropdown.Divider />

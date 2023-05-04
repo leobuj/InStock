@@ -12,6 +12,7 @@ import MyOrders from "./screens/MyOrders/MyOrders";
 
 import DashboardPage from "./screens/DashboardPage/DashboardPage";
 import MyShipments from "./screens/MyShipments/MyShipments";
+import ProfilePage from "./screens/ProfilePage/ProfilePage";
 
 const App = () => (
   <BrowserRouter>
@@ -25,6 +26,7 @@ const App = () => (
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </main>
 
