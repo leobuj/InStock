@@ -65,6 +65,7 @@ function OrderList({ orders, onRemoveOrder }) {
               <Accordion.Body>
                 <p>Status: {order.status}</p>
                 <p>Address: {order.address}</p>
+                <p>Date: {order.date}</p>
               </Accordion.Body>
             </Accordion.Item>
           </Card>
